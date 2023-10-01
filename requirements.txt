@@ -24,4 +24,4 @@ fire
 yfinance==0.2.28 
 
 #db
-sqlite3==2.6.0
+#sqlite3==2.6.0
