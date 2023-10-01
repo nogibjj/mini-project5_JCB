@@ -129,6 +129,15 @@ def print_range(ccy_df):
         )
 
 
+def pivot_by_price_type(single_ccy_df):
+    return single_ccy_df.pivot(
+        index="Datetime",
+        columns="Price type",
+        values="Price",
+        aggregate_function="mean",
+    )
+
+
 if __name__ == "__main__":
     currencies = read_data("currency_prices_long.csv")
     print_range(currencies)
