@@ -1,7 +1,30 @@
 import sqlite3
+import polars as pl
 
-connection = sqlite3.connect("currencies.db")
-cursor = connection.cursor()
+
+def create_connection(db_file):
+    """create a database connection to the SQLite database
+        specified by the db_file
+    :param db_file: database file
+    :return: Connection object or None
+    """
+    try:
+        conn = sqlite3.connect(db_file)
+        return conn
+    except sqlite3.Error as e:
+        print(e)
+
+    return None
+
+
+def create_cursor(connection):
+    try:
+        cursor = connection.cursor()
+        return cursor
+    except sqlite3.Error as e:
+        print(e)
+
+    return None
 
 
 def create_ohlc_table(table_name, cursor, connection):
@@ -32,3 +55,19 @@ def print_select_all(table_name, cursor):
     for i in cursor.execute(select_query):
         print(i)
         pass
+    pass
+
+
+def db_to_df(table_name, cursor):
+    select_query = "SELECT * FROM {}".format(table_name)
+    df = pl.DataFrame(cursor.execute(select_query))
+    df = df.rename(
+        {
+            "column_1": "Datetime",
+            "column_2": "Open",
+            "column_3": "High",
+            "column_4": "Low",
+            "column_5": "Close",
+        }
+    )
+    return df

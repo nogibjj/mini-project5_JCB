@@ -4,7 +4,8 @@ import polars as pl
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import matplotlib.ticker as mticker
-from download_currencies import download_prices_long, create_tickers
+
+# from download_currencies import download_prices_long, create_tickers
 
 
 def read_data(path):
@@ -15,10 +16,11 @@ def read_data(path):
         df = pl.read_csv(path, try_parse_dates=True)
         df = df.drop_nulls()
     except FileNotFoundError:
-        tickers = create_tickers(["usdmxn, eurusd, nzdusd"])
-        download_prices_long(tickers, start="2023-03-20", end="2023-09-15")
-        df = pl.read_csv(path, try_parse_dates=True)
-        df = df.drop_nulls()
+        # tickers = create_tickers(["usdmxn, eurusd, nzdusd"])
+        # download_prices_long(tickers, start="2023-03-20", end="2023-09-15")
+        # df = pl.read_csv(path, try_parse_dates=True)
+        # df = df.drop_nulls()
+        pass
     return df
 
 
