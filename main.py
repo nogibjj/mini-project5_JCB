@@ -1,4 +1,4 @@
-import fire
+#import fire
 from src.lib import read_data, pivot_by_price_type
 from database import db_handler
 import polars as pl
