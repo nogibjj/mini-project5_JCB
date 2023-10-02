@@ -1,4 +1,4 @@
-
+[![Install, lint, format, test](https://github.com/nogibjj/mini-project5_JCB/actions/workflows/ci.yml/badge.svg)](https://github.com/nogibjj/mini-project5_JCB/actions/workflows/ci.yml)
 
 # IDS 706 Mini-Project 5
 
