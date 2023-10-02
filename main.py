@@ -16,7 +16,7 @@ def insert_ccy_to_db(ccy):
 
     conn = db_handler.create_connection("database/currencies.db")
     cursor = db_handler.create_cursor(conn)
-    db_handler.create_ohlc_table("usdmxn", cursor, conn)
+    db_handler.create_ohlc_table(ccy, cursor, conn)
     db_handler.insert_ohlc(ccy, ccy_df, cursor, conn)
     conn.close()
     pass
